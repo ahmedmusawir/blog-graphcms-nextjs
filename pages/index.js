@@ -1,11 +1,11 @@
 import Head from 'next/head';
+import Categories from '../components/Categories';
+import PostCard from '../components/PostCard';
+import PostWidget from '../components/PostWidget';
+import { getPosts } from '../services';
 
-const posts = [
-  { title: 'React Testing', excerpt: 'Learn React Testing' },
-  { title: 'React with tailwind', excerpt: 'Learn React with Tailwind' },
-];
-
-export default function Home() {
+export default function Home({ posts }) {
+  console.log('Posts:', posts);
   return (
     <div className='container mx-auto px-10 mb-8'>
       <Head>
@@ -16,13 +16,25 @@ export default function Home() {
         <div className='lg:col-span-8 col-span-1'>
           {posts.map((post, index) => (
             <div key={index}>
-              {post.title}
-              {post.excerpt}
+              <PostCard post={post.node} key={post.node.title} />
             </div>
           ))}
         </div>
-        <div className='lg:col-span-4 col-span-1'></div>
+        <div className='lg:col-span-4 col-span-1'>
+          <div className='lg:sticky relative top-8'>
+            <PostWidget />
+            <Categories />
+          </div>
+        </div>
       </div>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const posts = (await getPosts()) || [];
+
+  return {
+    props: { posts },
+  };
 }
