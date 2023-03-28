@@ -1,0 +1,22 @@
+{
+  "response": {
+    "errors": [
+      {
+        "message": "[line: 13] expecting type 'String' for variable 'slug', 'Sting!' is given"
+      }
+    ],
+    "data": null,
+    "extensions": { "requestId": "clfrqm8a45ebt0a2j1kseolip" },
+    "status": 400,
+    "headers": {}
+  },
+  "request": {
+    "query": "\n    mutation CreateComment(\n      $name: String!\n      $email: String!\n      $comment: String!\n      $slug: Sting!\n    ) {\n      createComment(\n        data: {\n          name: $name\n          email: $email\n          comment: $comment\n          post: { connect: { slug: $slug } }\n        }\n      ) {\n        id\n      }\n    }\n  ",
+    "variables": {
+      "name": "moose",
+      "email": "moose9@email.com",
+      "comment": "first comment",
+      "slug": "open-ai-scifi-view-generated-by-dali"
+    }
+  }
+}

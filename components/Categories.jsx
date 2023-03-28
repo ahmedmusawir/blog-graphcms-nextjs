@@ -9,7 +9,7 @@ const Categories = () => {
     getCategories().then((allCats) => setCategories(allCats));
   }, []);
 
-  console.log('Cats:', categories);
+  // console.log('Cats:', categories);
 
   return (
     <div className='bg-white shadow-lg rounded-lg p-8 pb-12 mb-8'>
@@ -19,7 +19,7 @@ const Categories = () => {
           <span
             className={`cursor-pointer block ${
               index === categories.length - 1 ? 'border-b-0' : 'border-b'
-            } pb-3 mb-3`}
+            } pb-3 mb-3 font-semibold`}
           >
             {category.name}
           </span>
