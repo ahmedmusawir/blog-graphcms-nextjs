@@ -7,7 +7,6 @@ import {
   Author,
   Comments,
   CommentsForm,
-  AdjacentPosts,
 } from '../../components';
 import { getPosts, getPostDetails } from '../../services';
 
